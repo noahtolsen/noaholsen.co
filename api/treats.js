@@ -6,7 +6,8 @@ export default async function handler(request, response) {
       const treats = await kv.get('treats');
       return response.status(200).json({ count: treats || 0 });
     } catch (error) {
-      return response.status(500).json({ error: 'Failed to fetch treats' });
+      console.error('KV Error:', error);
+      return response.status(500).json({ error: 'Failed to fetch treats', details: error.message });
     }
   }
 
@@ -15,7 +16,8 @@ export default async function handler(request, response) {
       const treats = await kv.incr('treats');
       return response.status(200).json({ count: treats });
     } catch (error) {
-      return response.status(500).json({ error: 'Failed to increment treats' });
+      console.error('KV Error:', error);
+      return response.status(500).json({ error: 'Failed to increment treats', details: error.message });
     }
   }
 
