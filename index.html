@@ -567,10 +567,13 @@
             const treatBtn = document.getElementById('treat-btn');
             const counterEl = document.getElementById('treat-counter');
 
-            // Initial fetch of treat count
-            fetch('/api/treats')
-                .then(res => res.json())
-                .then(data => {
+            // Initial fetch of treat count with minimum delay
+            const minLoadingTime = 800; // ms
+            const fetchPromise = fetch('/api/treats').then(res => res.json());
+            const delayPromise = new Promise(resolve => setTimeout(resolve, minLoadingTime));
+
+            Promise.all([fetchPromise, delayPromise])
+                .then(([data]) => {
                     if (data.count !== undefined) {
                         counterEl.innerText = data.count;
                     }
