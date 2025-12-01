@@ -1,0 +1,8 @@
+{
+  "name": "theolsens",
+  "version": "1.0.0",
+  "description": "Noah Olsen's Personal Website",
+  "dependencies": {
+    "@vercel/kv": "^1.0.1"
+  }
+}
