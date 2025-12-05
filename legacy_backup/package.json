@@ -1,0 +1,8 @@
+{
+  "name": "theolsens",
+  "version": "1.0.0",
+  "description": "Noah Olsen's Personal Website",
+  "dependencies": {
+    "ioredis": "^5.3.2"
+  }
+}

@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0B0F19;
+  --color-card: #151B2B;
+  --color-accent: #38BDF8;
+  /* Sky Blue */
+  --color-gold: #FBBF24;
+  /* Amber/Gold */
+  --color-plate-green: #00594C;
+  /* Classic Colorado License Plate Green */
+  --color-accent-dark: #0EA5E9;
+  --color-gold-dark: #D97706;
+
+  --font-sans: var(--font-inter), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+@utility glass {
+  @apply bg-bg/80 backdrop-blur-md border-b border-white/10;
+}
+
+@utility card-hover {
+  @apply transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg hover:shadow-accent/10 hover:border-accent/30;
+}
+
+/* Custom Utilities that are just classes */
+.text-glow {
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+.text-glow-green {
+  text-shadow: 0 0 15px rgba(0, 89, 76, 0.4);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0F19;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #151B2B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #38BDF8;
+}
+
+/* Falling Emoji Animation */
+.falling-emoji {
+  position: fixed;
+  pointer-events: none;
+  z-index: 50;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+/* Fix for sticky hover on mobile */
+@media (hover: hover) {
+  .treat-btn-interactive:hover {
+    background-color: white;
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.6);
+  }
+
+  .treat-btn-interactive:hover .material-symbols-outlined {
+    transform: rotate(12deg);
+  }
+}
+
+/* Active state for mobile click effect */
+.treat-btn-active {
+  background-color: white !important;
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.6) !important;
+}
+
+.treat-btn-active .material-symbols-outlined {
+  transform: rotate(12deg) !important;
+}
