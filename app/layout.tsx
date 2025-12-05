@@ -2,17 +2,18 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google"; // Import Google Fonts
 import "./globals.css";
 
-// Configure fonts
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
   display: "swap",
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
