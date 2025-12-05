@@ -1,51 +1,36 @@
-# NoahOlsen.co
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-> Code, Coffee, & Canines.
+## Getting Started
 
-Welcome to the repository for **NoahOlsen.co**, a personal portfolio website exploring the intersection of machine learning, IoT, and belly rubs.
+First, run the development server:
 
-## 🚀 Features
-
-This single-page application features a modern, interactive design with:
-
-*   **The Lab**: A hero section with a "Dispense Treat" interactive button and falling emoji animations.
-*   **Projects**: A showcase of active projects (Alpha, Beta, Gamma) with tech stack tags.
-*   **Dog Log**: A masonry grid gallery of dog photos ("The Sysadmin") with humorous status updates (e.g., "bath_time_protocol", "lobbying").
-*   **Interactive Elements**:
-    *   **Treat Dispenser**: Click the button to increment the counter and trigger a treat rain.
-    *   **Mobile Optimizations**: Touch-friendly animations and scroll-triggered effects for the Dog Log.
-    *   **Dynamic Design**: Glassmorphism effects, smooth scrolling, and custom animations.
-
-## 🛠️ Tech Stack
-
-*   **HTML5**: Semantic structure.
-*   **Tailwind CSS**: Utility-first styling (loaded via CDN for rapid prototyping).
-*   **Vanilla JavaScript**: Lightweight interactivity (DOM manipulation, Intersection Observer).
-*   **Google Fonts**: Inter & JetBrains Mono.
-*   **Material Symbols**: Iconography.
-
-## 📦 Setup & Usage
-
-No build process is required! This project uses the Tailwind CSS CDN for simplicity.
-
-1.  **Clone the repository**:
-    ```bash
-    git clone https://github.com/noahtolsen/theolsens.co.git
-    ```
-2.  **Open the project**:
-    Simply open `index.html` in your preferred web browser.
-
-    > **Note**: For the best development experience, use a local server (e.g., Live Server in VS Code) to ensure all assets load correctly.
-
-## 📂 Project Structure
-
-```
-.
-├── images/             # Project assets and dog photos
-├── index.html          # Main application file
-└── README.md           # Project documentation
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## 📄 License
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-© 2025 Noah Olsen. Made in the Rockies.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
