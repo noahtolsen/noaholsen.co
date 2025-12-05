@@ -21,11 +21,47 @@ export async function GET() {
     }
 }
 
-export async function POST() {
+export async function POST(req: NextRequest) {
     try {
+        const body = await req.json().catch(() => ({}));
+        const { name, message } = body;
+
         const redis = getRedis();
         const treats = await redis.incr('treats');
         await redis.quit();
+
+        // Send notification if keys are present
+        if (process.env.RESEND_API_KEY && process.env.ADMIN_EMAIL && process.env.FROM_EMAIL) {
+            try {
+                const { Resend } = await import('resend');
+                const resend = new Resend(process.env.RESEND_API_KEY);
+
+                const { data, error } = await resend.emails.send({
+                    from: process.env.FROM_EMAIL,
+                    to: process.env.ADMIN_EMAIL,
+                    subject: `🐶 Honey got a treat from ${name || 'Someone'}!`,
+                    html: `
+                        <h2>Honey received a treat! 🦴</h2>
+                        <p><strong>From:</strong> ${name || 'Anonymous'}</p>
+                        <p><strong>Message:</strong> ${message || 'No message left.'}</p>
+                        <hr />
+                        <p><strong>Total Treats:</strong> ${treats}</p>
+                    `
+                });
+
+                if (error) {
+                    console.error('Resend API Error:', error);
+                } else {
+                    console.log('Treat notification sent!', data);
+                }
+            } catch (emailError) {
+                console.error('Failed to send email notification:', emailError);
+                // Don't fail the request if email fails
+            }
+        } else {
+            console.log('Skipping email notification: Missing environment variables');
+        }
+
         return NextResponse.json({ count: treats });
     } catch (error: any) {
         console.error('Redis Error:', error);
