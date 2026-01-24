@@ -17,8 +17,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "user@noaholsen:~/home",
-  description: "Noah Olsen's Personal Website - Exploring machine learning, IoT, and belly rubs.",
+  title: "Noah Olsen",
+  description: "Noah Olsen's personal website.",
 };
 
 export default function RootLayout({
