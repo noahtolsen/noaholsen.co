@@ -35,7 +35,7 @@ export default function Navbar() {
                                 PROJECTS
                             </Link>
                             <Link
-                                href="#dog-log"
+                                href="/dog"
                                 className="hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
                             >
                                 DOG_LOG
@@ -91,7 +91,7 @@ export default function Navbar() {
                             PROJECTS
                         </Link>
                         <Link
-                            href="#dog-log"
+                            href="/dog"
                             className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                             onClick={() => setIsOpen(false)}
                         >
