@@ -1,19 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const router = useRouter();
   const [exiting, setExiting] = useState(false);
 
-  const handleDogClick = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const handleDogClick = () => {
     setExiting(true);
-    setTimeout(() => {
-      router.push("/dog");
-    }, 300);
   };
 
   return (
@@ -32,8 +25,8 @@ export default function Home() {
 
         {/* Links grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-          <Link
-            href="/dog"
+          <a
+            href="https://dog.noaholsen.co"
             onClick={handleDogClick}
             className="group p-6 rounded-2xl bg-gradient-to-br from-amber-500/10 to-orange-500/5 border border-amber-500/20 hover:border-amber-500/40 transition-all duration-300 animate-fade-in animation-delay-300 hover:scale-[1.02] active:scale-[0.98]"
           >
@@ -41,7 +34,7 @@ export default function Home() {
             <span className="text-white font-medium group-hover:text-amber-400 transition-colors">
               The Dog
             </span>
-          </Link>
+          </a>
 
           <a
             href="https://github.com/noahtolsen"
