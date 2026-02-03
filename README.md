@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Overview
 
-## Getting Started
+Personal site for Noah Olsen, built with Next.js (App Router) and Tailwind CSS v4. This repo powers the main homepage at `https://noaholsen.co` and links to a couple of sibling subdomains.
 
-First, run the development server:
+## Subdomains (public surface)
+- `noaholsen.co` — this site; minimal hero with links out.
+- `dog.noaholsen.co` — standalone dog page with treat counter and photo log.
 
+## Private/Gated Area
+- `lab.noaholsen.co` — private access portal for gated apps (projects not listed here).
+
+> Note: There is a private auth gateway (`lab.noaholsen.co`) used only to issue the shared session cookie for protected apps. Details of the protected projects are not listed here.
+
+## Local Development (this repo)
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
+Visit http://localhost:3000. Main page code lives in `app/page.tsx`; global styles in `app/globals.css`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deployment
+- **Platform:** Vercel (recommended for this repo and `dog.noaholsen.co` / `lab.noaholsen.co` since they’re Next.js).
+- Ensure subdomain records in DNS point at the correct deployments.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Env Vars (high level)
+- This repo: none required.
+- `dog.noaholsen.co`: `REDIS_URL` (+ optional email keys) for the treat counter API.
+- Auth-dependent subdomains share a `LAB_SESSION_SECRET` issued by the gateway; keep it consistent across those apps.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Scripts
+```bash
+pnpm dev     # local dev
+pnpm build   # production build
+pnpm start   # serve built app
+pnpm lint    # ESLint
+```
