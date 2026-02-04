@@ -34,3 +34,37 @@ pnpm build   # production build
 pnpm start   # serve built app
 pnpm lint    # ESLint
 ```
+
+## Favicons (OpenAI + Theme Guide)
+We generate favicon masters with OpenAI and then export the standard sizes. This keeps a consistent look across subdomains.
+
+### Theme rules (all variants)
+- Base: circular badge, background `#0B0F19`
+- Accent ring: single ring in the variant accent color
+- Mark: white `#FFFFFF` symbol (monogram or icon)
+- Style: minimal geometric, flat colors, crisp edges
+- Avoid: gradients, shadows, bevels, glow, textures, text
+
+### Variant accents
+- Main: `#38BDF8` (cyan)
+- Dog: `#FBBF24` (amber)
+- Lab: `#34D399` (emerald)
+
+### Required output files
+Place these in `public/favicons/<variant>/` for each repo:
+- `icon-32.png`
+- `apple-icon-180.png`
+- `icon-512.png`
+- `favicon.ico` (must include 16/32/48)
+
+### Generation workflow (high level)
+1. Use the OpenAI image generator to create a 1024×1024 PNG master that follows the theme rules above.
+2. Downscale to the required sizes and generate `favicon.ico`.
+3. Wire metadata to the correct variant files:
+```ts
+icons: {
+  icon: "/favicons/<variant>/icon-32.png",
+  apple: "/favicons/<variant>/apple-icon-180.png",
+  shortcut: "/favicons/<variant>/favicon.ico",
+}
+```
