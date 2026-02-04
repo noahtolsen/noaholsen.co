@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "favicons": "uv run python scripts/generate-favicons.py"
   },
   "dependencies": {
     "clsx": "^2.1.1",

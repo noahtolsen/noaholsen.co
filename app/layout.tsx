@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Inter, JetBrains_Mono } from "next/font/google"; // Import Google Fonts
 import "./globals.css";
 
@@ -16,10 +17,24 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500", "700"],
 });
 
-export const metadata: Metadata = {
-  title: "Noah Olsen",
-  description: "Noah Olsen's personal website.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const host = headers().get("host") ?? "";
+  const variant = host.startsWith("dog.")
+    ? "dog"
+    : host.startsWith("lab.")
+      ? "lab"
+      : "main";
+
+  return {
+    title: "Noah Olsen",
+    description: "Noah Olsen's personal website.",
+    icons: {
+      icon: `/favicons/${variant}/icon-32.png`,
+      apple: `/favicons/${variant}/apple-icon-180.png`,
+      shortcut: `/favicons/${variant}/favicon.ico`,
+    },
+  };
+}
 
 export default function RootLayout({
   children,
